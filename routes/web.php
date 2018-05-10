@@ -14,12 +14,23 @@
 
 //Common/General Routes Started
 
+/*Front Routes Ended*/
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'Front\FrontController@dashboard')->name('dashboard');
+Route::get('/login', 'AuthenticationController@login_index')->name('login_index');
+Route::post('/login_post', 'AuthenticationController@login_post')->name('login_post');
+/*Front Routes Ended*/
+
+
 
 /*Admin Routes Started*/
+
 Route::group(['prefix' => 'admin' ,  'middleware' => 'is-admin'], function () {
 
 	Route::get('/', 'Admin\AdminController@index')->name('admin_index');
 	Route::get('admin_logout', 'Admin\AdminController@admin_logout')->name('admin_logout');
+	Route::resource('/product', 'Admin\ProductsController');
 
 //Users CRUD Routes Started
 	Route::get('users', 'Admin\AdminController@users')->name('users');
@@ -43,24 +54,10 @@ Route::group(['prefix' => 'admin' ,  'middleware' => 'is-admin'], function () {
 
 	//Admin Removing ProfilePicture
 	Route::get('/remove_picture_admin/{user_id}','Admin\AdminController@remove_picture_admin')->name('remove_picture_admin');
-	//Admin Removing ProfilePicture
-
-	//ADMIN QUESTIONS
-	Route::get('adminquestion_index','Admin\Admin_questionController@index')->name('adminquestion_index');
-	Route::get('/admin_question_form','Admin\Admin_questionController@new')->name('create_admin_question');
-	Route::post('/create_admin_questions','Admin\Admin_questionController@create')->name('create_question_for_admin');
-	Route::get('/admin_edit_question/{id}','Admin\Admin_questionController@question_edit')->name('admin_edit_question');
-	Route::post('/admin_question_update/{id}','Admin\Admin_questionController@question_update')->name('update_question_for_admin');
-	Route::get('/admin_question_delete/{id}','Admin\Admin_questionController@question_destroy')->name('admin_question_destroy');
+	//Admin Removing ProfilePicture	
 });
 
 /*Admin Routes Ended*/
 
 
-/*Front Routes Ended*/
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/', 'Front\FrontController@dashboard')->name('dashboard');
-
-//Route::get('/admin', 'Admin\AdminController@login')->name('admin_login');
-/*Front Routes Ended*/

@@ -11,11 +11,11 @@ use Auth;
 class AuthenticationController extends Controller
 {
     public function register_index(){
-    	return view('auth.register');
+        return view('auth.register');
     }
 
     public function register_post(Request $request){
-    	$values['request'] = $request->input();
+        $values['request'] = $request->input();
         // dd($request->input());
 
 
@@ -59,11 +59,11 @@ class AuthenticationController extends Controller
 
 
                 /*Attaching User Role to the New User */
-	            // - 1- Admin
-	            // - 2- Student
+                // - 1- Admin
+                // - 2- Student
                 $user->attachRole($request->input('role_id'));
 
-	            //Creating Profile for this new User.
+                //Creating Profile for this new User.
 
                 $this->set_session('User Successfully Registered.', true);
             }
@@ -81,7 +81,8 @@ class AuthenticationController extends Controller
     }
 
     public function login_index(){
-        return view('frontend.index');
+        // dd('asd');
+        return view('admin.auth.login');
     }
 
       public function login_post(Request $request){

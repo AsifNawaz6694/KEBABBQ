@@ -309,7 +309,7 @@ body { padding-left: 20px; padding-right: 20px; }
 <div class="container">
 	<div class="row">		
 		<div class="span12">
-			<h1>Online Recruitment</h1>
+			<h1>KEBABBQ</h1>
 			<div class="fade-in one">
 				<div id="whoops">
 					<img src="{{asset('public/assets/img/404_dark.png')}}" alt="" class="animated swing">
@@ -324,9 +324,9 @@ body { padding-left: 20px; padding-right: 20px; }
 			
 			<div class="fade-in three">
 			<p>
-			<a href="javascript:history.back()">Go Back</a>, or return to <a href="http://site.startupbug.net:6888/recruitment/v1/">OnlineRecruitment.Com</a> to choose a new page.
+			<a href="javascript:history.back()">Go Back</a>, or return to <a href="">Kebabbq.Com</a> to choose a new page.
 			<br/>
-			Please report any broken links to <a href="mailto:asifnawaz.aimviz@gmail.com">our team</a>.
+			Please report any broken links to <a href="mailto:kebabbq@info.com">our team</a>.
 			</p>		
 			<hr>			
 			</div> 			

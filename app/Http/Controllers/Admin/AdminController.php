@@ -16,9 +16,9 @@ use Datetime;
 use File;
 class AdminController extends Controller
 {
-    // public function login(){
-       
-    // }                
+    public function login(){
+      return view ('admin.auth.login');
+    }                
     public function index(){                
         return view('admin.index');
     }
@@ -227,6 +227,6 @@ class AdminController extends Controller
 
     public function admin_logout(){
         Auth::logout();
-        return redirect()->route('login_index');
+        return redirect()->route('dashboard');
     }
 }
