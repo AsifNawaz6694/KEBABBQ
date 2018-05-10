@@ -1,0 +1,72 @@
+/* ========================================================================================= */
+/* ======================================= COLOR : #3BAFDA =================================== */
+/* ========================================================================================= */
+.navbar-fixed-top .logo {
+  color: #3BAFDA;
+}
+.fixed .navbar-nav>li>a:hover {
+  color: #f18520;
+}
+.fixed .navbar-nav .active a {
+  color: #f18520;
+}
+.s-header .middle-c a {
+  border: 1px solid #fd891a ;
+  background: #fd891a ;
+}
+.s-header .middle-c #tr-btn:hover {
+  background: #2c333b;
+  border-color: #fff;
+}
+.s-features .features-c h3 span {
+  color: #3BAFDA;
+}
+.services .services-list ul li h3:after {
+  background: #fd891a;
+}
+.work .filter-work .is-checked {
+  background: #3BAFDA;
+  border-color: #3BAFDA;
+}
+.work .work-caption .overlay {
+  background: rgba(59, 175, 218, 0.9);
+}
+.price .item .type h5 {
+  color: #3BAFDA;
+}
+.price .item .order a:hover {
+  background: #3BAFDA;
+  border-color: #3BAFDA;
+}
+.price .best .order a {
+  background: #3BAFDA;
+  border-color: #3BAFDA;
+}
+.testimonial-box h3 {
+  color: #ff9209;
+}
+.blog-item .post-link a:hover,
+.blog-item .post-link a:hover i {
+  color: #3BAFDA;
+}
+.contact .item i,
+.contact .item .icon {
+  color: #3BAFDA;
+}
+.contact .item h6 {
+  color: #fd891a;
+}
+.contact .contact-form textarea:focus,
+.contact .contact-form input:focus {
+  border-color: #fd891a;
+}
+.contact .contact-form .button {
+  border-color: #fd891a;
+  color: #fff;
+}
+.contact .contact-form .button:hover {
+  background: #fd891a;
+}
+footer .sc-icon a:hover span {
+  background: #fff;
+}
