@@ -16,6 +16,9 @@ use Datetime;
 use File;
 class AdminController extends Controller
 {
+    // public function login(){
+       
+    // }                
     public function index(){                
         return view('admin.index');
     }

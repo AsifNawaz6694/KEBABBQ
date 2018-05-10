@@ -15,9 +15,9 @@ class IsRecruiterMiddleware
      */
     public function handle($request, Closure $next)
     {        
-        if(!Auth::check() || Auth::user()->role_id != '3'){
-            return redirect()->route('login_index');
-        }
+        // if(!Auth::check() || Auth::user()->role_id != '3'){
+        //     return redirect()->route('login_index');
+        // }
         return $next($request);
     }
 }

@@ -81,7 +81,7 @@ class AuthenticationController extends Controller
     }
 
     public function login_index(){
-        return view('auth.login');
+        return view('frontend.index');
     }
 
       public function login_post(Request $request){
