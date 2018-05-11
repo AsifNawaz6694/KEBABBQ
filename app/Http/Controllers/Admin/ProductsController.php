@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
 
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 use Image;
 use File;
 use DB;
@@ -19,8 +20,11 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
+        $args['products'] = Product::all();
+        return view('admin.products.index')->with($args);
     }
 
     /**
@@ -30,7 +34,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        return view('products.create');     
+        return view('admin.products.create');     
     }
 
     /**
@@ -41,8 +45,37 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {   
-    }
+        try{
+            $p = new Product;
+            $p->name = $request->input('name');
+            $p->description = $request->input('description');
+            if ($request->hasFile('image')) {
+                  $image=$request->file('image');
+                  $filename=time() . '.' . $image->getClientOriginalExtension();          
+                  $location=public_path('public/storage/products-images/'.$filename);
+                  $p->image=$filename;         
+            }
+            $p->image = $this->UploadImage('image', Input::file('image')); 
+            if($p->save()){
+                $this->set_session('Product Successfully Added.', true);
+            }else{
+                $this->set_session('Product Couldnot be added.', false);
+            }
+            return redirect()->route('products.index');
 
+        }catch(\Exception $e){
+            $this->set_session('User Couldnot be Added.'.$e->getMessage(), false);
+            return redirect()->route('products.index'); 
+        }
+    }
+    public function UploadImage($type, $file){
+        if( $type == 'image'){
+        $path = 'public/storage/products-images/';
+        }
+        $filename = md5($file->getClientOriginalName() . time()) . '.' . $file->getClientOriginalExtension();
+        $file->move( $path , $filename);
+        return $filename;
+    }
     /**
      * Display the specified resource.
      *
@@ -60,16 +93,7 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        
-        $p = Product::find($id);
-
-        if($p != null){
-            $args['product'] = $p;
-            return view('products.edit')->with($args);
-        }
-
-        return abort(404);
+    { 
     }
 
     /**

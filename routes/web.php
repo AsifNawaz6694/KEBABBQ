@@ -1,4 +1,4 @@
-<?php
+	<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +30,7 @@ Route::group(['prefix' => 'admin' ,  'middleware' => 'is-admin'], function () {
 
 	Route::get('/', 'Admin\AdminController@index')->name('admin_index');
 	Route::get('admin_logout', 'Admin\AdminController@admin_logout')->name('admin_logout');
-	Route::resource('/product', 'Admin\ProductsController');
+	Route::resource('/products', 'Admin\ProductsController');
 
 //Users CRUD Routes Started
 	Route::get('users', 'Admin\AdminController@users')->name('users');
@@ -42,6 +42,10 @@ Route::group(['prefix' => 'admin' ,  'middleware' => 'is-admin'], function () {
 	Route::get('user/delete/{id}', 'Admin\AdminController@destroy')->name('delete_user');
 	Route::get('user/{id}', 'Admin\AdminController@user_view')->name('user');
 //Users CRUD Routes Ended
+//Products CRUD Routes Ended
+	//Route::resource('/product','Admin\ProductsController');
+//Products CRUD Routes Ended
+
 
 	//Admin activate/deactivate Users
 	Route::get('/activate_user/{id}/', ["as" => "activate-user","uses" => "Admin\AdminController@activate_user"]);
