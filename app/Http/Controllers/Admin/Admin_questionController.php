@@ -11,6 +11,7 @@ use Auth;
 use Illuminate\Support\Facades\Input;
 class Admin_questionController extends Controller
 {
+   
 	public function index()
 	{
 		$questions = Admin_question::get();

@@ -314,9 +314,11 @@ class ComposerStaticInit153ad80e267334c2c6c030b015ca9894
     );
 
     public static $classMap = array (
+        'AddCategoryIdToProductsTable' => __DIR__ . '/../..' . '/database/migrations/2018_05_12_034754_add_category_id_to_products_table.php',
         'AddRoleIdToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2018_03_27_125816_add_role_id_to_users_table.php',
         'AddUsernameToProfilesTable' => __DIR__ . '/../..' . '/database/migrations/2018_03_27_143909_add_username_to_profiles_table.php',
         'AddVerifiedToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2018_03_27_142828_add_verified_to_users_table.php',
+        'App\\Category' => __DIR__ . '/../..' . '/app/Category.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Events\\CodingEntries' => __DIR__ . '/../..' . '/app/Events/CodingEntries.php',
         'App\\Events\\CodingQuestionDetail' => __DIR__ . '/../..' . '/app/Events/CodingQuestionDetail.php',
@@ -334,6 +336,8 @@ class ComposerStaticInit153ad80e267334c2c6c030b015ca9894
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Admin\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminController.php',
         'App\\Http\\Controllers\\Admin\\Admin_questionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Admin_questionController.php',
+        'App\\Http\\Controllers\\Admin\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CategoryController.php',
+        'App\\Http\\Controllers\\Admin\\ProductsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ProductsController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
@@ -343,7 +347,6 @@ class ComposerStaticInit153ad80e267334c2c6c030b015ca9894
         'App\\Http\\Controllers\\Front\\FrontController' => __DIR__ . '/../..' . '/app/Http/Controllers/Front/FrontController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\PagesController' => __DIR__ . '/../..' . '/app/Http/Controllers/PagesController.php',
-        'App\\Http\\Controllers\\ProductsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ProductsController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\IsAdminMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/IsAdminMiddleware.php',
@@ -383,6 +386,7 @@ class ComposerStaticInit153ad80e267334c2c6c030b015ca9894
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
+        'CreateCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2018_05_12_030604_create_categories_table.php',
         'CreateOrdersTable' => __DIR__ . '/../..' . '/database/migrations/2018_05_10_164816_create_orders_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateProductsTable' => __DIR__ . '/../..' . '/database/migrations/2018_05_10_163626_create_products_table.php',

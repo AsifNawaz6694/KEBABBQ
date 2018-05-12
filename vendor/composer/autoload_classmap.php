@@ -6,9 +6,11 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddCategoryIdToProductsTable' => $baseDir . '/database/migrations/2018_05_12_034754_add_category_id_to_products_table.php',
     'AddRoleIdToUsersTable' => $baseDir . '/database/migrations/2018_03_27_125816_add_role_id_to_users_table.php',
     'AddUsernameToProfilesTable' => $baseDir . '/database/migrations/2018_03_27_143909_add_username_to_profiles_table.php',
     'AddVerifiedToUsersTable' => $baseDir . '/database/migrations/2018_03_27_142828_add_verified_to_users_table.php',
+    'App\\Category' => $baseDir . '/app/Category.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Events\\CodingEntries' => $baseDir . '/app/Events/CodingEntries.php',
     'App\\Events\\CodingQuestionDetail' => $baseDir . '/app/Events/CodingQuestionDetail.php',
@@ -26,6 +28,8 @@ return array(
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Admin\\AdminController' => $baseDir . '/app/Http/Controllers/Admin/AdminController.php',
     'App\\Http\\Controllers\\Admin\\Admin_questionController' => $baseDir . '/app/Http/Controllers/Admin/Admin_questionController.php',
+    'App\\Http\\Controllers\\Admin\\CategoryController' => $baseDir . '/app/Http/Controllers/Admin/CategoryController.php',
+    'App\\Http\\Controllers\\Admin\\ProductsController' => $baseDir . '/app/Http/Controllers/Admin/ProductsController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',
@@ -35,7 +39,6 @@ return array(
     'App\\Http\\Controllers\\Front\\FrontController' => $baseDir . '/app/Http/Controllers/Front/FrontController.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\PagesController' => $baseDir . '/app/Http/Controllers/PagesController.php',
-    'App\\Http\\Controllers\\ProductsController' => $baseDir . '/app/Http/Controllers/Admin/ProductsController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
     'App\\Http\\Middleware\\IsAdminMiddleware' => $baseDir . '/app/Http/Middleware/IsAdminMiddleware.php',
@@ -75,6 +78,7 @@ return array(
     'Carbon\\CarbonInterval' => $vendorDir . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
     'Carbon\\Exceptions\\InvalidDateException' => $vendorDir . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
     'Carbon\\Translator' => $vendorDir . '/nesbot/carbon/src/Carbon/Translator.php',
+    'CreateCategoriesTable' => $baseDir . '/database/migrations/2018_05_12_030604_create_categories_table.php',
     'CreateOrdersTable' => $baseDir . '/database/migrations/2018_05_10_164816_create_orders_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateProductsTable' => $baseDir . '/database/migrations/2018_05_10_163626_create_products_table.php',

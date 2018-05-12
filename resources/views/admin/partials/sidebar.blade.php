@@ -21,7 +21,15 @@
     <br>
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">PAGES</li>
-      <li><a href="{{route('users')}}"><i class="fa fa-user text-aqua"></i> <span>Users</span></a></li>
+      <li><a href="{{route('users')}}"><i class="fa fa-user text-aqua"></i> <span>My Account</span></a></li>
+
+      <li><a href="{{route('categories')}}"><i class="fa fa-bars text-aqua"></i> <span>Category</span></a></li>
+
+      <li><a href="{{route('products')}}"><i class="fa fa-bars text-aqua"></i> <span>Products</span></a></li>
+
+      <li><a href=""><i class="fa fa-bars text-aqua"></i> <span>Orders</span></a></li>
+
+      <li><a href=""><i class="fa fa-bars text-aqua"></i> <span>Transactions</span></a></li>
       
      
       <li class="treeview">

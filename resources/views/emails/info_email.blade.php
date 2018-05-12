@@ -1,17 +1,21 @@
 <!DOCTYPE>
 <html>
 <head>
-    <title>Info Email</title>
+    <title>Contact Us Email</title>
 </head>
  
 <body>
-<h2>Title<b></b></h2>
-{{$stored_info->title}}
-<br/>
-<h3>Info</h3>
-{{$stored_info->info_description}}
+
+<h2>Name<b></b></h2>
+<p> {{ $data['name'] }} </p>
 <br>
-	By {{$user_data['name']}}
+<h2>Subject<b></b></h2>
+<p> {{ $data['subject'] }} </p>
+<br>
+<h2>Message<b></b></h2>
+<p> {{ $data['message'] }} </p>
+<br>
+
 </body>
  
 </html>

@@ -19,7 +19,8 @@
 
 		<!-- FONT-AWESOME & ET-LINE-FONT CSS -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/alertify.min.css"/>
+		<link rel="stylesheet" href="{{ asset('public/bower_components/alertify/themes/alertify.default.css') }}">
 	    <!-- MAGNIFIC POPUP CORE CSS -->
 	    <link rel="stylesheet" href="{{ asset('public/front_assets/css/magnific-popup.css') }}">
 	    <!-- <link href="css/magnific-popup.css" rel="stylesheet"> -->

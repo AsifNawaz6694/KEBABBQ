@@ -9,19 +9,9 @@ use Hash;
 use Auth;
 use Session;
 use Mail;
-use App\Question;
-use App\Question_detail;
-use App\Question_solution;
-use App\User;
-use App\Question_level;
-use App\Question_tag;
-use App\Coding_entry;
-use App\Setting_info;
-use App\Test_case;
-use App\Coding_question_language;
-use App\Questions_submission_resource;
-use App\Allowed_language;
-
+use App\Category;
+use App\Product;
+use View;
 class FrontController extends Controller
 {
     /**
@@ -31,7 +21,7 @@ class FrontController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
+            
     }
 
     /**
@@ -41,6 +31,37 @@ class FrontController extends Controller
      */
     public function dashboard()
     { 
-        return view('frontend.index');
+        $args['products'] = Product::get();        
+        return view('frontend.index')->with($args);
     }
+
+    public function contact_form(Request $request)
+    { 
+    try {
+       if (isset($request->email)) { 
+            if (isset($request->name)) {
+            $data['name'] = $request->name;
+            }
+            if (isset($request->email)) {
+            $data['email'] = $request->email;
+            }
+            if (isset($request->subject)) {
+            $data['subject'] = $request->subject;
+            }
+            if (isset($request->message)) {
+            $data['message'] = $request->message;
+            }      
+          Mail::send('emails.info_email',['data'=>$data] , function ($message) use($data){
+              $message->from($data['email'], 'Contact Us Email - KEBABBQ');
+              $message->to(env('MAIL_USERNAME'))->subject('KEBABBQ - Contact Us Email');
+            });         
+          return \Response()->Json([ 'status' => 200,'msg'=>'Thank you for your valuable time. we will get back to you as soon as possible.']);
+         }else{
+           return \Response()->Json([ 'status' => 202, 'msg'=>'Something Went Wrong, Please Try Again!']);
+         }  
+      } catch (QueryException $e) {
+        return \Response()->Json([ 'array' => $e]);
+      }       
+    }        
+    
 }

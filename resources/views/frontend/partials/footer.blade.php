@@ -68,10 +68,12 @@
 	    <!-- Magnific Popup core JS -->
 	    <script src="{{ asset('public/front_assets/js/jquery.magnific-popup.min.js') }}"></script>
 		<!-- PARSLEY file -->
+	    <script src="{{ asset('public/front_assets/js/custom.js') }}"></script>
 	    <script src="{{ asset('public/front_assets/js/parsley.js') }}"></script>
 		<!-- OWL CAROUSEL JS -->
 		<script src="{{ asset('public/front_assets/js/owl.carousel.min.js') }}"></script>
 		<!-- MAPS JS -->
+		<script src="http://cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/alertify.min.js"></script>
 		<script src="{{ asset('public/front_assets/js/gmaps.min.js') }}"></script>
 		<script src="http://maps.google.com/maps/api/js?key=AIzaSyAduGkGiILZzHThk6zpT8DB7SBmP575dWs"></script>
 		<script src="{{ asset('public/front_assets/js/map.js') }}"></script>

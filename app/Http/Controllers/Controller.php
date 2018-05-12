@@ -11,6 +11,10 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+	public function __construct()
+    {
+        ini_set('max_execution_time', 300);
+    }
     //generic function for initializing session
     protected function set_session($msg, $status){
 	     session()->put('result', $status);

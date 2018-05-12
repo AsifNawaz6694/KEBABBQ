@@ -900,11 +900,21 @@ img {
 }
 
 /* fa */
-.fa{
+/*.fa{
     margin-bottom: 20px;
     line-height: 75px;
     color: #333;
-font-size: 45px;}
+    font-size: 45px;
+  }*/
+
+.fa{
+    margin-bottom: 20px;
+    line-height: 19px;
+    /* color: #333; */
+    font-size: 15px;
+  }
+
+   
 /*---------------------------------------
   11. TESTIMONIALS                
 -----------------------------------------*/
@@ -1244,4 +1254,177 @@ footer .sc-icon a:hover span {
 }
 .contact-nosuccess i {
   color: #e9573f;
+}
+
+
+.addCrtBtn {
+  display: inline-block;
+  background: #f18520;
+  width: 160px;
+  font-size: 16px;
+  text-transform: capitalize;
+  position: absolute;
+  bottom: 30%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border-radius: 4px;
+  line-height: 36px;
+  font-weight: 500;
+  display: none;
+}
+.services .services-list ul li .item-content:hover .addCrtBtn {
+  display: block;
+}
+.services .services-list ul li .item-content:hover .addCrtBtn {
+    display: block;
+}
+
+
+.breadcrumb {
+    background: none;
+    margin: 50px 0 0;
+    font-weight: 400;
+    font-size: 0.8em;
+    padding: 0;
+    list-style: none;
+    border-radius: .25rem;
+}
+.breadcrumb-item {
+    float: left;
+}
+.breadcrumb-item.active {
+    color: #636c72;
+}
+.text-uppercase {
+    text-transform: uppercase!important;
+}
+section.cart {
+    padding-bottom: 0;
+}
+.cart-page section {
+    padding: 50px 0 100px;
+}
+.cart-page .arrow {
+    margin: 50px auto;
+}
+.cart-page .arrow span:first-of-type {
+    transform-origin: bottom right;
+    transform: rotate(25deg);
+}
+.cart-page .arrow span {
+    display: inline-block;
+    transform-origin: bottom left;
+    width: 50px;
+    height: 1px;
+    background: #888;
+}
+section.shipping {
+    padding: 0;
+}
+.custom-form input, .custom-form select {
+    height: 50px !important;
+    line-height: 50px;
+    padding: 0 20px;
+    margin-bottom: 10px;
+    border-radius: 30px;
+}
+section.shipping form h3 {
+    margin: 30px 0;
+    text-align: left;
+    font-family: "Playfair Display",serif;
+    font-weight: 600;
+    line-height: 1.1;
+    color: inherit;
+    font-size: 30px;
+}
+.heading-line::after {
+    content: '';
+    width: 50px;
+    height: 1px;
+    background: #ff9209;
+    margin: 4px 0 20px;
+    display: block;
+}
+.custom-form input, .custom-form select {
+    height: 50px !important;
+    line-height: 50px;
+    padding: 0 20px;
+    margin-bottom: 10px;
+    border-radius: 30px;
+}
+.custom-form input[type=checkbox], .custom-form select[type=checkbox] {
+    display: none;
+}
+.custom-form input, .custom-form select {
+    height: 50px !important;
+    line-height: 50px;
+    padding: 0 20px;
+    margin-bottom: 10px;
+    border-radius: 30px;
+}
+.custom-form input[type='submit'], .custom-form button[type='submit'] {
+    cursor: pointer;
+    margin-bottom: 50px;
+}
+.btn-unique {
+    color: #fff;
+    font-size:  18px;
+    background-color: #ee8a0c;
+    border-color: #ee8a0c;
+    border-radius: 15px;
+    padding: 10px 40px;
+}
+ol.breadcrumb li a {
+    line-height: 20px;
+    color: #fd891a !important;
+}
+ol.breadcrumb li{font-size:  15px;font-weight: 500;}
+.card-table thead {
+    background: #2c333b;
+    color: #fff;
+    font-weight: 500;
+}
+
+.card-table thead tr th {
+  padding: 14px 20px;
+  font-size: 17px;
+  font-weight:  400;
+  text-align: center;
+}
+
+.card-table thead tr th:nth-child(1) {
+  text-align: left;
+}
+
+img.img-fluid {
+    max-width: 90px;
+    height: auto;
+}
+.card-table tbody tr td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.card-table tbody tr td:nth-child(1), .card-table tbody tr td:nth-child(2)  {
+  text-align: left;
+  font-weight: 400;
+}
+
+.card-table tbody tr td:nth-child(2){
+  font-size: 25px;
+  font-family: "Playfair Display",serif;
+  line-height: 1.1;
+}
+.card-table tbody tr td{
+  font-size: 22px;
+  font-family: "Playfair Display",serif;
+  line-height: 1.1;
+  font-weight: 600;
+}
+i.fa.fa-close {
+    margin-bottom: 20px;
+    line-height: 75px;
+    color: #333;
+    font-size: 30px;
 }
