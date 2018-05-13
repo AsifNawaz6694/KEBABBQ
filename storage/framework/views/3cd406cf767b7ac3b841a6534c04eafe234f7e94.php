@@ -1,16 +1,4 @@
-                    <?php if(isset($result) && $result): ?>
-                        <div class="alert alert-success">
-                          <strong>Success!</strong> <?php echo e($msg); ?>.
-                        </div>                
-                    <?php endif; ?>
-
-                    <?php if(isset($result) && !$result): ?>
-                        <div class="alert alert-danger">
-                          <strong>Error!</strong> <?php echo e($msg); ?>.
-                        </div>
-                    <?php endif; ?>
-
-                    <?php if(Session::has('result') && Session::get('result')==true): ?>
+                   <?php if(Session::has('result') && Session::get('result')==true): ?>
                         <div class="alert alert-success">
                           <strong>Success!</strong> <?php echo e(Session::get('msg')); ?>.
                         </div>

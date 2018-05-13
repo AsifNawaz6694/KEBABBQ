@@ -56,7 +56,7 @@
 		<!-- ====== JS ======  -->
 		<!-- JQUERY -->
 		<script src="<?php echo e(asset('public/front_assets/js/jquery.v1.12.4.js')); ?>"></script>
-		<script src="<?php echo e(asset('public/front_assets/js/jquery.v1.12.4.js')); ?>"></script>
+		
 		<!-- BOOTSTRAP JS -->
 		<script src="<?php echo e(asset('public/front_assets/js/bootstrap.min.js')); ?>"></script>
 		<!-- COUNT TO JS -->

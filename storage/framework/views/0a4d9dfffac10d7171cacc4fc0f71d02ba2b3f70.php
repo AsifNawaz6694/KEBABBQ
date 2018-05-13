@@ -21,6 +21,24 @@
 <!-- =========    ABOUT END    ======== -->
 <!-- =========    SERVICES START    ======== -->
 <section class="services sections" id="services" data-scroll-index="2" style="background:#fff;">
+                      <?php if(Session::has('result') && Session::get('result')==true): ?>
+                        <div class="alert alert-success">
+                          <strong>Success!</strong> <?php echo e(Session::get('msg')); ?>.
+                        </div>
+                          <?php echo e(Session::forget('result')); ?>
+
+                          <?php echo e(Session::forget('msg')); ?>                                    
+                    <?php endif; ?>
+
+                    <?php if(Session::has('result') && Session::get('result')==false): ?>
+                        <div class="alert alert-danger">
+                          <strong>Error!</strong> <?php echo e(Session::get('msg')); ?>.
+                          <?php echo e(Session::forget('result')); ?>
+
+                          <?php echo e(Session::forget('msg')); ?>
+
+                        </div>                        
+                    <?php endif; ?>                    
    <div class="container">
       <div class="row">
          <!-- SECTION TITLE -->
@@ -36,8 +54,17 @@
                <li class="col-md-4">
                   <div class="item-content">
                      <img src="<?php echo e(asset('public/storage/products-images/' . $product->image)); ?>">                  
-                     <h3><?php echo e($product->name); ?></h3>  
-                     <a class="addCrtBtn" href="#">Add To Cart</a>                   
+                     <h3><?php echo e($product->name); ?></h3> 
+                     
+                     <form action="<?php echo e(route('store_cart')); ?>" method="post">
+                        <?php echo e(csrf_field()); ?>
+
+                        <input type="hidden" name="product_id" value="<?php echo e($product->id); ?>">
+                        <input type="hidden" name="product_name" value="<?php echo e($product->name); ?>">
+                        <input type="hidden" name="product_price" value="<?php echo e($product->price); ?>">
+                        <button class="addCrtBtn" type="submit">Add To Cart</button>
+                     </form> 
+                     
                   </div>
                </li>
                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>          

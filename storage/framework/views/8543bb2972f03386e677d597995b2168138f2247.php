@@ -1,5 +1,6 @@
 <?php $__env->startSection('content'); ?>
-<section class="services sections" id="services" data-scroll-index="2" style="background:#fff;">
+<section class="services sections active" id="services" style="background:#fff;">   
+   <?php echo $__env->make('general_partials.error_section', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
    <div class="container">
       <div class="row">
          <div class="cart-page">
@@ -15,6 +16,8 @@
             <!-- Shopping Cart Section-->
             <section class="cart">
                <div class="container">
+                  <?php if(Cart::count() > 0 ): ?>
+                  <h2 style="margin-left: 0px;">Total Items In Cart(<?php echo e(Cart::count()); ?>)</h2>               
                   <table class="table table-hover card-table">
                      <thead>
                         <tr>
@@ -26,50 +29,37 @@
                         </tr>
                      </thead>
                      <tbody>
+                        <?php $__currentLoopData = Cart::content(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                        
                         <tr>
                            <td >
-                              <img src="<?php echo e(asset('public\front_assets\images/bbq-cover.jpg')); ?>" alt="product" class="img-fluid">
+                              <img src="<?php echo e(asset('public/storage/products-images/' . $item->model->image)); ?>" alt="product" class="img-fluid">
                            </td>
-                           <td class="col-md-3">Fast telephoto zoom lense nano crystal</td>
-                           <td>$500</td>
+                           <td class="col-md-3"><?php echo e($item->name); ?></td>
+                           <td>$<?php echo e($item->price); ?></td>
                            <td class="col-md-1">
                               <input type="number" value="1" class="form-control">
                            </td>
-                           <td class="col-md-2">$500</td>
+                           <td class="col-md-2"><?php echo e(Cart::total()); ?></td>
                            <td class="col-md-1">
-                              <a href="#"><i class="fa fa-close"></i></a>
+                              <form action="<?php echo e(route('remove_cart',$item->rowId)); ?>" method="POST">
+                                 <?php echo e(csrf_field()); ?>
+
+                                 <?php echo e(method_field('DELETE')); ?>
+
+                                 <button type="submit">Remove</button>
+                              
+                              </form>
+
                            </td>
                         </tr>
-                        <tr>
-                           <td >
-                              <img src="<?php echo e(asset('public\front_assets\images/bbq-cover.jpg')); ?>" alt="product" class="img-fluid">
-                           </td>
-                           <td class="col-md-3">Fast telephoto zoom lense nano crystal</td>
-                           <td>$500</td>
-                           <td class="col-md-1">
-                              <input type="number" value="1" class="form-control">
-                           </td>
-                           <td class="col-md-2">$500</td>
-                           <td class="col-md-1">
-                              <a href="#"><i class="fa fa-close"></i></a>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td >
-                              <img src="<?php echo e(asset('public\front_assets\images/bbq-cover.jpg')); ?>" alt="product" class="img-fluid">
-                           </td>
-                           <td class="col-md-3">Fast telephoto zoom lense nano crystal</td>
-                           <td>$500</td>
-                           <td class="col-md-1">
-                              <input type="number" value="1" class="form-control">
-                           </td>
-                           <td class="col-md-2">$500</td>
-                           <td class="col-md-1">
-                              <a href="#"><i class="fa fa-close"></i></a>
-                           </td>
-                        </tr>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                      </tbody>
                   </table>
+                  <?php else: ?>
+                  <h2>No Item Exist In Cart</h2>
+                  <?php endif; ?>
                </div>
             </section>
             <!-- Step Arrow-->

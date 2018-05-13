@@ -1,6 +1,7 @@
 @extends('frontend.layouts.app')
 @section('content')
-<section class="services sections" id="services" data-scroll-index="2" style="background:#fff;">
+<section class="services sections active" id="services" style="background:#fff;">   
+   @include('general_partials.error_section')
    <div class="container">
       <div class="row">
          <div class="cart-page">
@@ -16,6 +17,8 @@
             <!-- Shopping Cart Section-->
             <section class="cart">
                <div class="container">
+                  @if(Cart::count() > 0 )
+                  <h2 style="margin-left: 0px;">Total Items In Cart({{ Cart::count() }})</h2>               
                   <table class="table table-hover card-table">
                      <thead>
                         <tr>
@@ -27,50 +30,35 @@
                         </tr>
                      </thead>
                      <tbody>
+                        @foreach(Cart::content() as $item)
+
+                        {{-- {{{ dd($item) }}} --}}
                         <tr>
                            <td >
-                              <img src="{{ asset('public\front_assets\images/bbq-cover.jpg') }}" alt="product" class="img-fluid">
+                              <img src="{{ asset('public/storage/products-images/' . $item->model->image) }}" alt="product" class="img-fluid">
                            </td>
-                           <td class="col-md-3">Fast telephoto zoom lense nano crystal</td>
-                           <td>$500</td>
+                           <td class="col-md-3">{{ $item->name }}</td>
+                           <td>${{ $item->price }}</td>
                            <td class="col-md-1">
                               <input type="number" value="1" class="form-control">
                            </td>
-                           <td class="col-md-2">$500</td>
+                           <td class="col-md-2">{{ Cart::total() }}</td>
                            <td class="col-md-1">
-                              <a href="#"><i class="fa fa-close"></i></a>
+                              <form action="{{ route('remove_cart',$item->rowId) }}" method="POST">
+                                 {{ csrf_field() }}
+                                 {{ method_field('DELETE') }}
+                                 <button type="submit">Remove</button>
+                              {{-- <a href="#"><i class="fa fa-close"></i></a> --}}
+                              </form>
+
                            </td>
                         </tr>
-                        <tr>
-                           <td >
-                              <img src="{{ asset('public\front_assets\images/bbq-cover.jpg') }}" alt="product" class="img-fluid">
-                           </td>
-                           <td class="col-md-3">Fast telephoto zoom lense nano crystal</td>
-                           <td>$500</td>
-                           <td class="col-md-1">
-                              <input type="number" value="1" class="form-control">
-                           </td>
-                           <td class="col-md-2">$500</td>
-                           <td class="col-md-1">
-                              <a href="#"><i class="fa fa-close"></i></a>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td >
-                              <img src="{{ asset('public\front_assets\images/bbq-cover.jpg') }}" alt="product" class="img-fluid">
-                           </td>
-                           <td class="col-md-3">Fast telephoto zoom lense nano crystal</td>
-                           <td>$500</td>
-                           <td class="col-md-1">
-                              <input type="number" value="1" class="form-control">
-                           </td>
-                           <td class="col-md-2">$500</td>
-                           <td class="col-md-1">
-                              <a href="#"><i class="fa fa-close"></i></a>
-                           </td>
-                        </tr>
+                        @endforeach()
                      </tbody>
                   </table>
+                  @else
+                  <h2>No Item Exist In Cart</h2>
+                  @endif
                </div>
             </section>
             <!-- Step Arrow-->

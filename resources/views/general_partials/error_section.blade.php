@@ -1,16 +1,4 @@
-                    @if(isset($result) && $result)
-                        <div class="alert alert-success">
-                          <strong>Success!</strong> {{$msg}}.
-                        </div>                
-                    @endif
-
-                    @if(isset($result) && !$result)
-                        <div class="alert alert-danger">
-                          <strong>Error!</strong> {{$msg}}.
-                        </div>
-                    @endif
-
-                    @if(Session::has('result') && Session::get('result')==true)
+                   @if(Session::has('result') && Session::get('result')==true)
                         <div class="alert alert-success">
                           <strong>Success!</strong> {{Session::get('msg')}}.
                         </div>

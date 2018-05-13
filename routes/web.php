@@ -24,6 +24,11 @@ Route::post('contact_form',['as'=>'contact_form','uses'=>'Front\FrontController@
 
 // Cart Routes Started
 Route::get('/cart','Front\CartController@cart')->name('cart');
+Route::post('/cart_store','Front\CartController@store')->name('store_cart');
+Route::delete('/cart_remove{product}','Front\CartController@destroy')->name('remove_cart');
+Route::get('empty_cart',function(){
+Cart::destroy();
+});
 // Cart Routes Ended
 
 /*Front Routes Ended*/

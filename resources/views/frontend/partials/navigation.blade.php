@@ -12,7 +12,7 @@
                <span class="icon-bar"></span>
                </button>
                <!-- logo -->
-               <a class="logo navbar-brand" href="#home" data-scroll-nav="0">
+               <a class="logo navbar-brand" href="{{ route('dashboard') }}">
                <span><img src="{{asset('public/front_assets/images/keba-logo1.png')}}" alt="KEBABBQ Logo"></span>
                </a>
             </div>
@@ -20,7 +20,7 @@
             <div class="collapse navbar-collapse" id="collapse">
                <!-- links -->
                <ul class="nav navbar-nav navbar-right" id="navbar">
-                  <li><a href="#home" data-scroll-nav="0" class="active">Home</a></li>
+                  <li><a href="home#" data-scroll-nav="0" class="active">Home</a></li>
                   <li><a href="#about" data-scroll-nav="1">About Us</a></li>
                   <!--<li class="dropdown">
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-scroll-nav="2">Menu <span class="caret"></span></a>
@@ -92,7 +92,14 @@
                   <li><a href="#contact" data-scroll-nav="6">Contact</a></li>
                   <li>
                      <a href="{{ route('cart') }}">
-                     <span class="fa fa-shopping-cart my-cart-icon"><span class="badge badge-notify my-cart-badge">10</span> CART  </span>
+                     <span class="fa fa-shopping-cart my-cart-icon">
+                     @if(Cart::instance('default')->count() > 0 )
+                     <span class="badge badge-notify my-cart-badge">
+                        {{ Cart::instance('default')->count()}}
+                     </span>
+                     @endif
+                      CART
+                      </span>
                      </a>
                   </li>
                   {{--   

@@ -22,6 +22,21 @@
 <!-- =========    ABOUT END    ======== -->
 <!-- =========    SERVICES START    ======== -->
 <section class="services sections" id="services" data-scroll-index="2" style="background:#fff;">
+                  @if(Session::has('result') && Session::get('result')==true)
+                        <div class="alert alert-success">
+                          <strong>Success!</strong> {{Session::get('msg')}}.
+                        </div>
+                          {{Session::forget('result')}}
+                          {{Session::forget('msg')}}                                    
+                    @endif
+
+                    @if(Session::has('result') && Session::get('result')==false)
+                        <div class="alert alert-danger">
+                          <strong>Error!</strong> {{Session::get('msg')}}.
+                          {{Session::forget('result')}}
+                          {{Session::forget('msg')}}
+                        </div>                        
+                    @endif                    
    <div class="container">
       <div class="row">
          <!-- SECTION TITLE -->
@@ -37,8 +52,16 @@
                <li class="col-md-4">
                   <div class="item-content">
                      <img src="{{asset('public/storage/products-images/' . $product->image)}}">                  
-                     <h3>{{ $product->name }}</h3>  
-                     <a class="addCrtBtn" href="#">Add To Cart</a>                   
+                     <h3>{{ $product->name }}</h3> 
+                     {{-- {{{ dd($product->name) }}} --}}
+                     <form action="{{ route('store_cart') }}" method="post">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        <input type="hidden" name="product_name" value="{{ $product->name }}">
+                        <input type="hidden" name="product_price" value="{{ $product->price }}">
+                        <button class="addCrtBtn" type="submit">Add To Cart</button>
+                     </form> 
+                     {{-- <a class="addCrtBtn" href="#">Add To Cart</a>                    --}}
                   </div>
                </li>
                @endforeach          
