@@ -19,15 +19,16 @@
 
 namespace Doctrine\DBAL\Sharding;
 
+use Doctrine\Common\EventManager;
+use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\Driver;
 use Doctrine\DBAL\Event\ConnectionEventArgs;
 use Doctrine\DBAL\Events;
-use Doctrine\DBAL\Driver;
-use Doctrine\DBAL\Configuration;
-
-use Doctrine\Common\EventManager;
-
 use Doctrine\DBAL\Sharding\ShardChoser\ShardChoser;
+use function array_merge;
+use function is_numeric;
+use function is_string;
 
 /**
  * Sharding implementation that pools many different connections
@@ -72,7 +73,7 @@ class PoolingShardConnection extends Connection
     private $activeConnections;
 
     /**
-     * @var integer
+     * @var int
      */
     private $activeShardId;
 
@@ -129,11 +130,69 @@ class PoolingShardConnection extends Connection
     }
 
     /**
+     * Get active shard id.
+     *
+     * @return int
+     */
+    public function getActiveShardId()
+    {
+        return $this->activeShardId;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getParams()
+    {
+        return $this->activeShardId ? $this->connections[$this->activeShardId] : $this->connections[0];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getHost()
+    {
+        $params = $this->getParams();
+
+        return $params['host'] ?? parent::getHost();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPort()
+    {
+        $params = $this->getParams();
+
+        return $params['port'] ?? parent::getPort();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getUsername()
+    {
+        $params = $this->getParams();
+
+        return $params['user'] ?? parent::getUsername();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPassword()
+    {
+        $params = $this->getParams();
+
+        return $params['password'] ?? parent::getPassword();
+    }
+
+    /**
      * Connects to a given shard.
      *
      * @param mixed $shardId
      *
-     * @return boolean
+     * @return bool
      *
      * @throws \Doctrine\DBAL\Sharding\ShardingException
      */
@@ -151,10 +210,11 @@ class PoolingShardConnection extends Connection
             throw new ShardingException("Cannot switch shard when transaction is active.");
         }
 
-        $this->activeShardId = (int)$shardId;
+        $this->activeShardId = (int) $shardId;
 
         if (isset($this->activeConnections[$this->activeShardId])) {
             $this->_conn = $this->activeConnections[$this->activeShardId];
+
             return false;
         }
 
@@ -179,12 +239,12 @@ class PoolingShardConnection extends Connection
     {
         $params = $this->getParams();
 
-        $driverOptions = isset($params['driverOptions']) ? $params['driverOptions'] : array();
+        $driverOptions = $params['driverOptions'] ?? [];
 
         $connectionParams = $this->connections[$shardId];
 
-        $user = isset($connectionParams['user']) ? $connectionParams['user'] : null;
-        $password = isset($connectionParams['password']) ? $connectionParams['password'] : null;
+        $user = $connectionParams['user'] ?? null;
+        $password = $connectionParams['password'] ?? null;
 
         return $this->_driver->connect($connectionParams, $user, $password, $driverOptions);
     }
@@ -192,7 +252,7 @@ class PoolingShardConnection extends Connection
     /**
      * @param string|null $shardId
      *
-     * @return boolean
+     * @return bool
      */
     public function isConnected($shardId = null)
     {
@@ -210,5 +270,6 @@ class PoolingShardConnection extends Connection
     {
         $this->_conn             = null;
         $this->activeConnections = null;
+        $this->activeShardId     = null;
     }
 }

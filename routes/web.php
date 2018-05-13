@@ -21,7 +21,11 @@ Route::get('/', 'Front\FrontController@dashboard')->name('dashboard');
 Route::get('/login', 'AuthenticationController@login_index')->name('login_index');
 Route::post('/login_post', 'AuthenticationController@login_post')->name('login_post');
 Route::post('contact_form',['as'=>'contact_form','uses'=>'Front\FrontController@contact_form']);
+
+// Cart Routes Started
 Route::get('/cart','Front\CartController@cart')->name('cart');
+// Cart Routes Ended
+
 /*Front Routes Ended*/
 
 

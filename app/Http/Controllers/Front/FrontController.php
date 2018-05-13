@@ -31,7 +31,9 @@ class FrontController extends Controller
      */
     public function dashboard()
     { 
+
         $args['products'] = Product::get();        
+        
         return view('frontend.index')->with($args);
     }
 
