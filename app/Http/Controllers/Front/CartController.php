@@ -56,7 +56,6 @@ class CartController extends Controller
         Cart::remove($id);
          $this->set_session('Item Removed From Cart', true);  
         return redirect()->route('cart');
-
      }
 
 }

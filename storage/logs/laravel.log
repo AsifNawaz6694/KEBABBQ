@@ -15210,3 +15210,6 @@ Stack trace:
 #13 C:\xampp\htdocs\KEBABBQ\public\index.php(60): Illuminate\Foundation\Http\Kernel->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
 #14 C:\xampp\htdocs\KEBABBQ\index.php(21): require_once('C:\\xampp\\htdocs...')
 #15 {main}  
+[2018-05-14 07:25:44] local.ERROR: Symfony\Component\Debug\Exception\FatalErrorException: Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\KEBABBQ\vendor\doctrine\dbal\lib\Doctrine\DBAL\Driver\PDOStatement.php:65
+Stack trace:
+#0 {main}  

@@ -21,7 +21,7 @@
 <!-- =========    ABOUT END    ======== -->
 <!-- =========    SERVICES START    ======== -->
 <section class="services sections" id="services" data-scroll-index="2" style="background:#fff;">
-                      <?php if(Session::has('result') && Session::get('result')==true): ?>
+                  <?php if(Session::has('result') && Session::get('result')==true): ?>
                         <div class="alert alert-success">
                           <strong>Success!</strong> <?php echo e(Session::get('msg')); ?>.
                         </div>

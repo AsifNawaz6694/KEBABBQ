@@ -99,7 +99,9 @@
 
                      </span>
                      <?php endif; ?>
+                     <span>
                       CART
+                     </span>
                       </span>
                      </a>
                   </li>

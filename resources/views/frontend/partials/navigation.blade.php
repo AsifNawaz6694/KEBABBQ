@@ -98,7 +98,9 @@
                         {{ Cart::instance('default')->count()}}
                      </span>
                      @endif
+                     <span>
                       CART
+                     </span>
                       </span>
                      </a>
                   </li>
