@@ -21,7 +21,7 @@ class FrontController extends Controller
      */
     public function __construct()
     {
-            
+            ini_set('max_execution_time', 300);
     }
 
     /**
@@ -31,9 +31,8 @@ class FrontController extends Controller
      */
     public function dashboard()
     { 
-
+        ini_set('max_execution_time', 300);
         $args['products'] = Product::get();        
-        
         return view('frontend.index')->with($args);
     }
 

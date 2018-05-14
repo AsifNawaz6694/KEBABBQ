@@ -10,45 +10,49 @@
                   <li class="breadcrumb-item text-uppercase">
                      <a href="" class="text-primary">Home</a>
                   </li>
-                  <li class="breadcrumb-item active text-uppercase">Shopping Cart</li>
+                  <li class="breadcrumb-item active text-uppercase">Cart</li>
                </ol>
             </div>
             <!-- Shopping Cart Section-->
             <section class="cart">
                <div class="container">
                   <?php if(Cart::count() > 0 ): ?>
-                  <h2 style="margin-left: 0px;">Total Items In Cart(<?php echo e(Cart::count()); ?>)</h2>               
-                  <table class="table table-hover card-table">
+                  <h2 style="margin-left: 0px;">Total Items In Cart(<?php echo e(Cart::count()); ?>)</h2> 
+                  <hr>
+                  <br>              
+                  <table class="table table-hover card-table" id="order_table">
                      <thead>
                         <tr>
-                           <th colspan="2">Product</th>
+                           <th>Image</th>
+                           <th style="text-align: left;">Name</th>
                            <th>Price</th>
-                           <th>Quantity</th>
-                           <th>Total</th>
-                           <th></th>
+                           <th class="col-md-1">Quantity</th>
+                          <!--  <th>Total</th> -->
+                           <th>Action</th>
                         </tr>
                      </thead>
                      <tbody>
-                        <?php $__currentLoopData = Cart::content(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
-                        
+                        <?php $__currentLoopData = Cart::content(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>                       
                         <tr>
-                           <td >
+                           <td>
                               <img src="<?php echo e(asset('public/storage/products-images/' . $item->model->image)); ?>" alt="product" class="img-fluid">
                            </td>
-                           <td class="col-md-3"><?php echo e($item->name); ?></td>
-                           <td>$<?php echo e($item->price); ?></td>
-                           <td class="col-md-1">
-                              <input type="number" value="1" class="form-control">
+                           <td><?php echo e($item->name); ?></td>
+                           <td class="price_value">
+                              <input type="hidden" name="price" class="price" value="<?php echo e($item->price); ?>">
+                             <p> <?php echo e($item->price); ?> </p>
                            </td>
-                           <td class="col-md-2"><?php echo e(Cart::total()); ?></td>
                            <td class="col-md-1">
+                              <input type="number" value="1" min="1" class="form-control quantity_value" >
+                           </td>
+                           <!-- <td class="col-md-2"><?php echo e(Cart::total()); ?></td> -->
+                           <td>
                               <form action="<?php echo e(route('remove_cart',$item->rowId)); ?>" method="POST">
                                  <?php echo e(csrf_field()); ?>
 
                                  <?php echo e(method_field('DELETE')); ?>
 
-                                 <button type="submit">Remove</button>
+                                 <button type="submit" class="btn btn-danger">Remove</button>
                               
                               </form>
 
@@ -60,6 +64,14 @@
                   <?php else: ?>
                   <h2>No Item Exist In Cart</h2>
                   <?php endif; ?>
+                  <div class="row">
+                     <div class="col-md-12">
+                        <p class="total_price_value">
+                           <b>Total Amount : </b>
+                           <span></span>
+                        </p>      
+                     </div>
+                  </div>
                </div>
             </section>
             <!-- Step Arrow-->
@@ -68,34 +80,37 @@
                <div class="container">
                   <div class="form-holder">
                      <form id="shipping-address-form" action="#" method="post" class="custom-form" novalidate="novalidate">
+
+                        <?php $__currentLoopData = Cart::content(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <input type="hidden" name="id[]" value="">
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                        <input type="hidden" name="total_price" class="total_price_value_input" value="">
                         <input type="hidden" name="form-name" value="shipping-address-form">
                         <!-- Main Shipping Address -->
                         <div class="shipping-main">
                            <h3 class="heading-line">Invoice Address</h3>
                            <div class="row">
                               <div class="col-sm-6 form-group">
-                                 <input type="text" name="firstname" placeholder="First Name" required="" class="form-control" aria-required="true">
+                                 <input type="text" name="first_name" placeholder="First Name" required="" class="form-control" aria-required="true">
                               </div>
                               <div class="col-sm-6 form-group">
-                                 <input type="text" name="lastname" placeholder="Last Name" required="" class="form-control" aria-required="true">
+                                 <input type="text" name="last_name" placeholder="Last Name" required="" class="form-control" aria-required="true">
                               </div>
                               <div class="col-sm-6 form-group">
                                  <input type="email" name="email" placeholder="Email Address" required="" class="form-control" aria-required="true">
                               </div>
                               <div class="col-sm-6 form-group">
-                                 <input type="text" name="number" placeholder="Phone Number" required="" class="form-control" aria-required="true">
+                                 <input type="text" name="phone" placeholder="Phone Number" required="" class="form-control" aria-required="true">
                               </div>
-                              <div class="col-sm-8 form-group">
-                                 <input type="text" name="address-1" placeholder="Address" required="" class="form-control" aria-required="true">
-                              </div>
-                              <div class="col-sm-4 form-group">
-                                 <input type="text" name="address-2" placeholder="Apt, Suit, etc." required="" class="form-control" aria-required="true">
-                              </div>
+                              <div class="col-sm-12 form-group">
+                                 <input type="text" name="address" placeholder="Address" required="" class="form-control" aria-required="true">
+                              </div>                           
                               <div class="col-sm-6 form-group">
                                  <input type="text" name="city" placeholder="City" required="" class="form-control" aria-required="true">
                               </div>
                               <div class="col-sm-6 form-group">
-                                 <input type="text" name="postalcode" placeholder="Postal Code" required="" class="form-control" aria-required="true">
+                                 <input type="text" name="postal_code" placeholder="Postal Code" required="" class="form-control" aria-required="true">
                               </div>
                               <div class="col-sm-6 form-group">
                                  <input type="text" name="region" placeholder="Region" required="" class="form-control" aria-required="true">
@@ -125,7 +140,7 @@
                            </div>
                         </div>
                         <!-- Alternative Shipping Address             -->
-                        <div class="shipping-alternative">
+                        <!-- <div class="shipping-alternative">
                            <h3 class="heading-line">Shipping Address</h3>
                            <div class="row">
                               <div class="col-sm-6 form-group">
@@ -178,9 +193,9 @@
                                  </select>
                               </div>
                            </div>
-                        </div>
+                        </div> -->
                         <!-- Payment Method    -->
-                        <div class="payment-method">
+                       <!--  <div class="payment-method">
                            <h3 class="heading-line">Payment Method</h3>
                            <div class="row">
                               <div class="col-sm-6 form-group">
@@ -202,7 +217,10 @@
                                  <button id="shipping-submit" type="submit" class="oder-now btn btn-unique btn-lg">Order Now <i class="icon-shipping-truck"></i></button>
                               </div>
                            </div>
-                        </div>
+                        </div> -->
+                        <div class="col-sm-12 text-center">
+                                 <button id="shipping-submit" type="submit" class="oder-now btn btn-unique btn-lg">Order Now <i class="icon-shipping-truck"></i></button>
+                              </div>
                      </form>
                   </div>
                </div>

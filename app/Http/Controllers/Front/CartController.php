@@ -23,7 +23,7 @@ class CartController extends Controller
      */
     public function __construct()
     {
-            
+         ini_set('max_execution_time', 300);   
     }
 
     /**
@@ -44,19 +44,17 @@ class CartController extends Controller
         });
         // dd($duplicate);
         if ($duplicate->isNotEmpty()) {
-            $this->set_session('Item Already Exist In Your To Cart', false);  
-                return redirect()->route('dashboard');
+            return \Response()->Json([ 'status' => 202,'msg'=>'Item Already Already Exist In Cart.']);
         }
         Cart::add($request->product_id, $request->product_name, 1, $request->product_price)->associate('App\Product');
 
-        $this->set_session('Item Added To Cart', true);  
-        return redirect()->route('cart');
+       return \Response()->Json([ 'status' => 200,'msg'=>'Your Item Is Added To Cart Successfully.']);
+        // return redirect()->route('cart');
      }
      public function destroy($id){
         Cart::remove($id);
          $this->set_session('Item Removed From Cart', true);  
         return redirect()->route('cart');
-
      }
 
 }

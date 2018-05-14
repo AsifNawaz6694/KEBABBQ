@@ -1428,3 +1428,14 @@ i.fa.fa-close {
     color: #333;
     font-size: 30px;
 }
+.total_price_value{
+  text-align: right;
+}
+
+.total_price_value span{
+  font-weight: 600;
+}
+span.fa.fa-shopping-cart.my-cart-icon span {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px; 
+}

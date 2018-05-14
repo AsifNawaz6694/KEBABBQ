@@ -54,7 +54,7 @@
                      <img src="{{asset('public/storage/products-images/' . $product->image)}}">                  
                      <h3>{{ $product->name }}</h3> 
                      {{-- {{{ dd($product->name) }}} --}}
-                     <form action="{{ route('store_cart') }}" method="post">
+                     <form id="storeCart" action="{{ route('store_cart') }}"  method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <input type="hidden" name="product_id" value="{{ $product->id }}">
                         <input type="hidden" name="product_name" value="{{ $product->name }}">

@@ -21,7 +21,7 @@
 <!-- =========    ABOUT END    ======== -->
 <!-- =========    SERVICES START    ======== -->
 <section class="services sections" id="services" data-scroll-index="2" style="background:#fff;">
-                      <?php if(Session::has('result') && Session::get('result')==true): ?>
+                  <?php if(Session::has('result') && Session::get('result')==true): ?>
                         <div class="alert alert-success">
                           <strong>Success!</strong> <?php echo e(Session::get('msg')); ?>.
                         </div>
@@ -56,7 +56,7 @@
                      <img src="<?php echo e(asset('public/storage/products-images/' . $product->image)); ?>">                  
                      <h3><?php echo e($product->name); ?></h3> 
                      
-                     <form action="<?php echo e(route('store_cart')); ?>" method="post">
+                     <form id="storeCart" action="<?php echo e(route('store_cart')); ?>"  method="POST" enctype="multipart/form-data">
                         <?php echo e(csrf_field()); ?>
 
                         <input type="hidden" name="product_id" value="<?php echo e($product->id); ?>">
