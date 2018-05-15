@@ -27,10 +27,12 @@ $("#contactForm").on('submit', function(e){
   });
 });
 
-$("#storeCart").on('submit', function(e){
-  // alert('123');
+$(".storeCart").on('submit', function(e){
+    //alert('123');
+    console.log(123);
+    //return false;
   e.preventDefault();
-  processData: false,  
+  //processData: false,  
   // contentType: false,
   var formData = $(this).serialize();
   $.ajaxSetup({

@@ -56,7 +56,7 @@
                      <img src="<?php echo e(asset('public/storage/products-images/' . $product->image)); ?>">                  
                      <h3><?php echo e($product->name); ?></h3> 
                      
-                     <form id="storeCart" action="<?php echo e(route('store_cart')); ?>"  method="POST" enctype="multipart/form-data">
+                     <form id="storeCart" class="storeCart" action="<?php echo e(route('store_cart')); ?>"  method="POST" enctype="multipart/form-data">
                         <?php echo e(csrf_field()); ?>
 
                         <input type="hidden" name="product_id" value="<?php echo e($product->id); ?>">

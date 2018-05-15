@@ -39,6 +39,7 @@ class CartController extends Controller
     }   
      public function store(Request $request){
         // dd($request->product_name);
+       // return 123;
         $duplicate = Cart::search(function($cartItem,$rowId) use($request){
             return $cartItem->id === $request->product_id;
         });
