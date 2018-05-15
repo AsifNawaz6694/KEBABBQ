@@ -37,6 +37,10 @@ class CartController extends Controller
         // dd('12');     
         return view('frontend.cart.cart');
     }   
+     public function thankyou(Request $request){
+        return view('frontend.cart.thankyou');
+        // dd('thankyou for purchasing');
+     }
      public function store(Request $request){
         // dd($request->product_name);
        // return 123;
@@ -45,7 +49,7 @@ class CartController extends Controller
         });
         // dd($duplicate);
         if ($duplicate->isNotEmpty()) {
-            return \Response()->Json([ 'status' => 202,'msg'=>'Item Already Already Exist In Cart.']);
+            return \Response()->Json([ 'status' => 202,'msg'=>'Item  Already Exist In Cart.']);
         }
         Cart::add($request->product_id, $request->product_name, 1, $request->product_price)->associate('App\Product');
 

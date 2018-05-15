@@ -164,6 +164,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,        
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
@@ -177,6 +178,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        'Netshell\Paypal\PaypalServiceProvider',
 
 
     ],
@@ -230,6 +233,7 @@ return [
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
 
+        'Paypal' => 'Netshell\Paypal\Facades\Paypal',
 
     ],
 
