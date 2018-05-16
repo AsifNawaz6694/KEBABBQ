@@ -32,7 +32,7 @@
                         </tr>
                      </thead>
                      <tbody>
-                        <?php $__currentLoopData = Cart::content(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>                       
+                        <?php $__currentLoopData = Cart::content(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>                       
                         <tr>
                            <td>
                               <img src="<?php echo e(asset('public/storage/products-images/' . $item->model->image)); ?>" alt="product" class="img-fluid">
@@ -43,7 +43,7 @@
                               <p> <?php echo e($item->price); ?> </p>
                            </td>
                            <td class="col-md-1">
-                              <input type="number" value="<?php echo e($item->qty); ?>" min="1" class="form-control quantity_value" >
+                              <input type="number" data-message="<?php echo e($key); ?>" value="<?php echo e($item->qty); ?>" min="1" class="form-control quantity_value" >
                            </td>
                            <!-- <td class="col-md-2"><?php echo e(Cart::total()); ?></td> -->
                            <td>
@@ -81,10 +81,9 @@
                      <form id="shipping-address-form" action="<?php echo e(route('place_order')); ?>" method="post" class="custom-form" novalidate="novalidate">
                         <?php echo e(csrf_field()); ?>
 
-                        <?php $__currentLoopData = Cart::content(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>                       
-
+                        <?php $__currentLoopData = Cart::content(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <input type="hidden" name="id[]" value="<?php echo e($item->id); ?>">
-                        <input type="hidden" name="quantity[]" value="<?php echo e($item->qty); ?>">
+                        <input type="hidden" id="quantity_<?php echo e($key); ?>" name="quantity[]" value="<?php echo e($item->qty); ?>">
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <input type="hidden" name="total_price" class="total_price_value_input" value="">
                         

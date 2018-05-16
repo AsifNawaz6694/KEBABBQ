@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddStatusToNOrdersTable extends Migration
+class AddTotalPriceToNOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddStatusToNOrdersTable extends Migration
     public function up()
     {
         Schema::table('n__orders', function (Blueprint $table) {
-          $table->tinyInteger('status')->nullable()->default('0')->after('region');
+              $table->string('total_price')->after('postal_code');  
         });
     }
 
@@ -26,7 +26,7 @@ class AddStatusToNOrdersTable extends Migration
     public function down()
     {
         Schema::table('n__orders', function (Blueprint $table) {
-            $table->dropColumn('status');
+             $table->dropColumn('total_price');
         });
     }
 }

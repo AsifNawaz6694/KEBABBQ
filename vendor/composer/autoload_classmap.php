@@ -7,9 +7,11 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AddCategoryIdToProductsTable' => $baseDir . '/database/migrations/2018_05_12_034754_add_category_id_to_products_table.php',
+    'AddColumnsToNOrderDetailsTable' => $baseDir . '/database/migrations/2018_05_16_134143_add_columns_to_n_order_details_table.php',
     'AddQuantityToNOrderDetailsTable' => $baseDir . '/database/migrations/2018_05_15_174840_add_quantity_to_n_order_details_table.php',
     'AddRoleIdToUsersTable' => $baseDir . '/database/migrations/2018_03_27_125816_add_role_id_to_users_table.php',
     'AddStatusToNOrdersTable' => $baseDir . '/database/migrations/2018_05_15_183106_add_status_to_n__orders_table.php',
+    'AddTotalPriceToNOrdersTable' => $baseDir . '/database/migrations/2018_05_16_100859_add_total_price_to_n__orders_table.php',
     'AddUsernameToProfilesTable' => $baseDir . '/database/migrations/2018_03_27_143909_add_username_to_profiles_table.php',
     'AddVerifiedToUsersTable' => $baseDir . '/database/migrations/2018_03_27_142828_add_verified_to_users_table.php',
     'App\\Category' => $baseDir . '/app/Category.php',
@@ -31,6 +33,7 @@ return array(
     'App\\Http\\Controllers\\Admin\\AdminController' => $baseDir . '/app/Http/Controllers/Admin/AdminController.php',
     'App\\Http\\Controllers\\Admin\\Admin_questionController' => $baseDir . '/app/Http/Controllers/Admin/Admin_questionController.php',
     'App\\Http\\Controllers\\Admin\\CategoryController' => $baseDir . '/app/Http/Controllers/Admin/CategoryController.php',
+    'App\\Http\\Controllers\\Admin\\OrdersController' => $baseDir . '/app/Http/Controllers/Admin/OrdersController.php',
     'App\\Http\\Controllers\\Admin\\ProductsController' => $baseDir . '/app/Http/Controllers/Admin/ProductsController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',

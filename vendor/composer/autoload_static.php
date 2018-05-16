@@ -334,9 +334,11 @@ class ComposerStaticInit153ad80e267334c2c6c030b015ca9894
 
     public static $classMap = array (
         'AddCategoryIdToProductsTable' => __DIR__ . '/../..' . '/database/migrations/2018_05_12_034754_add_category_id_to_products_table.php',
+        'AddColumnsToNOrderDetailsTable' => __DIR__ . '/../..' . '/database/migrations/2018_05_16_134143_add_columns_to_n_order_details_table.php',
         'AddQuantityToNOrderDetailsTable' => __DIR__ . '/../..' . '/database/migrations/2018_05_15_174840_add_quantity_to_n_order_details_table.php',
         'AddRoleIdToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2018_03_27_125816_add_role_id_to_users_table.php',
         'AddStatusToNOrdersTable' => __DIR__ . '/../..' . '/database/migrations/2018_05_15_183106_add_status_to_n__orders_table.php',
+        'AddTotalPriceToNOrdersTable' => __DIR__ . '/../..' . '/database/migrations/2018_05_16_100859_add_total_price_to_n__orders_table.php',
         'AddUsernameToProfilesTable' => __DIR__ . '/../..' . '/database/migrations/2018_03_27_143909_add_username_to_profiles_table.php',
         'AddVerifiedToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2018_03_27_142828_add_verified_to_users_table.php',
         'App\\Category' => __DIR__ . '/../..' . '/app/Category.php',
@@ -358,6 +360,7 @@ class ComposerStaticInit153ad80e267334c2c6c030b015ca9894
         'App\\Http\\Controllers\\Admin\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminController.php',
         'App\\Http\\Controllers\\Admin\\Admin_questionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Admin_questionController.php',
         'App\\Http\\Controllers\\Admin\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CategoryController.php',
+        'App\\Http\\Controllers\\Admin\\OrdersController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/OrdersController.php',
         'App\\Http\\Controllers\\Admin\\ProductsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ProductsController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',

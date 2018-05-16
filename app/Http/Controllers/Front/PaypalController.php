@@ -57,16 +57,19 @@ class PaypalController extends Controller
 				$store->postal_code = $request->postal_code;
 				$store->country = $request->country;
 				$store->save();
-
-				foreach ($request->id as $key => $value) {
-					if (isset($request->id)) {
-						$store_detail = new n_order_details;					
-						$store_detail->order_id = $store->id;
-						$store_detail->product_id = $value;
-						$store_detail->quantity = 1;
-						$store_detail->save();
-					}
-				}				
+				if (isset($request->id)) {
+					foreach ($request->id as $key => $value) {
+						$product_data = Product::where('id',$value)->first();					
+							$store_detail = new n_order_details;					
+							$store_detail->order_id = $store->id;
+							$store_detail->product_id =  $value;
+							$store_detail->product_price =  $product_data['price'];
+							$store_detail->total_price_name =  $product_data['price'] * $request->quantity[$key];
+							$store_detail->product_name = $product_data['name'];				
+							$store_detail->quantity =  $request->quantity[$key];
+							$store_detail->save();
+					}					
+				}							
 			}else{
 				$this->set_session('Please Provide All The Required Fields', false);  
 				return redirect()->back();
@@ -82,8 +85,7 @@ class PaypalController extends Controller
 		$cal = n_order_details::where('order_id',$store->id)->get();
 		foreach ($cal as $key => $value) {
 			$product = Product::where('id',$value->product_id)->first();
-			$total_price += $product['price'] * 1;
-			
+			$total_price += $product['price'] * 1;			
 		}
 			// dd($total_price);
 		// dd('stop');

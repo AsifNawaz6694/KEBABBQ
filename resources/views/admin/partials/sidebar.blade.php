@@ -27,11 +27,11 @@
 
       <li><a href="{{route('products')}}"><i class="fa fa-bars text-aqua"></i> <span>Products</span></a></li>
 
-      <li><a href=""><i class="fa fa-bars text-aqua"></i> <span>Orders</span></a></li>
+      <li><a href="{{route('orders')}}"><i class="fa fa-bars text-aqua"></i> <span>Orders</span></a></li>
 
-      <li><a href=""><i class="fa fa-bars text-aqua"></i> <span>Transactions</span></a></li>
+      <!-- <li><a href=""><i class="fa fa-bars text-aqua"></i> <span>Transactions</span></a></li> -->
       
-     
+   <!--   
       <li class="treeview">
          <a href="#">
            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
@@ -43,7 +43,7 @@
            <li><a href="../../index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
            <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
          </ul>
-       </li>
+       </li> -->
     </ul>
   </section>
   <!-- /.sidebar -->

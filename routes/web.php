@@ -10,45 +10,50 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
 //Common/General Routes Started
 
 /*Front Routes Ended*/
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/', 'Front\FrontController@dashboard')->name('dashboard');
-Route::get('/login', 'AuthenticationController@login_index')->name('login_index');
-Route::post('/login_post', 'AuthenticationController@login_post')->name('login_post');
-Route::post('contact_form',['as'=>'contact_form','uses'=>'Front\FrontController@contact_form']);
+	Route::get('/home', 'HomeController@index')->name('home');
+	Route::get('/', 'Front\FrontController@dashboard')->name('dashboard');
+	Route::get('/login', 'AuthenticationController@login_index')->name('login_index');
+	Route::post('/login_post', 'AuthenticationController@login_post')->name('login_post');
+	Route::post('contact_form',['as'=>'contact_form','uses'=>'Front\FrontController@contact_form']);
 
-// Cart Routes Started
-Route::get('/cart','Front\CartController@cart')->name('cart');
-Route::get('/thankyou','Front\CartController@thankyou')->name('thankyou');
-Route::post('/cart_store','Front\CartController@store')->name('store_cart');
-Route::delete('/cart_remove{product}','Front\CartController@destroy')->name('remove_cart');
-Route::get('empty_cart',function(){
-Cart::destroy();
-});
+	// Cart Routes Started
+	Route::get('/cart','Front\CartController@cart')->name('cart');
+	Route::get('/thankyou','Front\CartController@thankyou')->name('thankyou');
+	Route::post('/cart_store','Front\CartController@store')->name('store_cart');
+	Route::delete('/cart_remove{product}','Front\CartController@destroy')->name('remove_cart');
+	Route::get('empty_cart',function(){
+		Cart::destroy();
+	});
 // Cart Routes Ended
 
 // Payment Routes Started
 Route::post('place_order/', 'Front\PaypalController@getCheckout')->name('place_order');
 Route::get('getDone/', 'Front\PaypalController@getDone')->name('getDone');
 Route::get('getCancel/', 'Front\PaypalController@getCancel')->name('getCancel');
-// Payment Routes Started
+// Payment Routes Ended
 
 /*Front Routes Ended*/
 
-
-
 /*Admin Routes Started*/
-
 Route::group(['prefix' => 'admin' ,  'middleware' => 'is-admin'], function () {
-
 	Route::get('/', 'Admin\AdminController@index')->name('admin_index');
 	Route::get('admin_logout', 'Admin\AdminController@admin_logout')->name('admin_logout');
-	
+		
+//Statistics Routes Started
+	Route::get('/chart', 'Admin\AdminController@chart')->name('chart');
+//Statistics Routes Ended
+
+//Orders Routes Started
+	Route::get('/orders','Admin\OrdersController@index')->name('orders');
+	Route::get('/order_view/{id}','Admin\OrdersController@order_view')->name('order_view');
+	Route::get('/confirm_order/{id}/', ["as" => "confirm-order", "uses" => "Admin\OrdersController@confirm_order"]);
+	Route::get('/reject_order/{id}/', ["as" => "reject-order", "uses" => "Admin\OrdersController@reject_order"]);
+//Orders Routes Ended
+
 //Products CRUD Routes Started
 	Route::get('/product','Admin\ProductsController@index')->name('products');
 	Route::post('product/store', 'Admin\ProductsController@store')->name('store_product');
@@ -57,7 +62,7 @@ Route::group(['prefix' => 'admin' ,  'middleware' => 'is-admin'], function () {
 	Route::get('product/{id}', 'Admin\ProductsController@product_view')->name('product_view');
 	Route::get('product/{id}/edit', 'Admin\ProductsController@edit')->name('product_edit');
 	Route::post('update_product/{id}',['as'=>'update_product','uses'=>'Admin\ProductsController@update']);
-		Route::post('ImageUploadProduct',['as'=>'ImageUploadProduct','uses'=>'Admin\ProductsController@ImageUploadProduct']);
+	Route::post('ImageUploadProduct',['as'=>'ImageUploadProduct','uses'=>'Admin\ProductsController@ImageUploadProduct']);
 //Products CRUD Routes Ended
 
 //Categories CRUD Routes Started
@@ -68,9 +73,8 @@ Route::group(['prefix' => 'admin' ,  'middleware' => 'is-admin'], function () {
 	Route::get('category/{id}', 'Admin\CategoryController@category_view')->name('category_view');
 	Route::get('category/{id}/edit', 'Admin\CategoryController@edit')->name('category_edit');
 	Route::post('update_category/{id}',['as'=>'update_category','uses'=>'Admin\CategoryController@update']);
-		Route::post('ImageUploadProduct',['as'=>'ImageUploadProduct','uses'=>'Admin\CategoryController@ImageUploadProduct']);
+	Route::post('ImageUploadProduct',['as'=>'ImageUploadProduct','uses'=>'Admin\CategoryController@ImageUploadProduct']);
 //Categories CRUD Routes Ended
-
 
 //Users CRUD Routes Started
 	Route::get('users', 'Admin\AdminController@users')->name('users');
@@ -95,8 +99,4 @@ Route::group(['prefix' => 'admin' ,  'middleware' => 'is-admin'], function () {
 	Route::get('/remove_picture_admin/{user_id}','Admin\AdminController@remove_picture_admin')->name('remove_picture_admin');
 	//Admin Removing ProfilePicture	
 });
-
 /*Admin Routes Ended*/
-
-
-

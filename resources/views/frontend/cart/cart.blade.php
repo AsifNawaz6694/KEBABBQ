@@ -33,7 +33,7 @@
                         </tr>
                      </thead>
                      <tbody>
-                        @foreach(Cart::content() as $item)                       
+                        @foreach(Cart::content() as $key => $item)                       
                         <tr>
                            <td>
                               <img src="{{ asset('public/storage/products-images/' . $item->model->image) }}" alt="product" class="img-fluid">
@@ -44,7 +44,7 @@
                               <p> {{ $item->price }} </p>
                            </td>
                            <td class="col-md-1">
-                              <input type="number" value="{{ $item->qty }}" min="1" class="form-control quantity_value" >
+                              <input type="number" data-message="{{$key}}" value="{{ $item->qty }}" min="1" class="form-control quantity_value" >
                            </td>
                            <!-- <td class="col-md-2">{{ Cart::total() }}</td> -->
                            <td>
@@ -79,10 +79,9 @@
                   <div class="form-holder">
                      <form id="shipping-address-form" action="{{ route('place_order') }}" method="post" class="custom-form" novalidate="novalidate">
                         {{ csrf_field() }}
-                        @foreach(Cart::content() as $item)                       
-{{-- {{{ dd($item) }}} --}}
+                        @foreach(Cart::content() as $key => $item)
                         <input type="hidden" name="id[]" value="{{ $item->id}}">
-                        <input type="hidden" name="quantity[]" value="{{ $item->qty}}">
+                        <input type="hidden" id="quantity_{{$key}}" name="quantity[]" value="{{ $item->qty}}">
                         @endforeach
                         <input type="hidden" name="total_price" class="total_price_value_input" value="">
                         {{-- <input type="hidden" name="form-name" value="shipping-address-form"> --}}

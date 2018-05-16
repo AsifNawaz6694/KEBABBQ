@@ -38,6 +38,7 @@ class CartController extends Controller
         return view('frontend.cart.cart');
     }   
      public function thankyou(Request $request){
+        Cart::destroy();
         return view('frontend.cart.thankyou');
         // dd('thankyou for purchasing');
      }
@@ -53,7 +54,8 @@ class CartController extends Controller
         }
         Cart::add($request->product_id, $request->product_name, 1, $request->product_price)->associate('App\Product');
 
-       return \Response()->Json([ 'status' => 200,'msg'=>'Your Item Is Added To Cart Successfully.']);
+        $count = Cart::instance('default')->count();
+       return \Response()->Json([ 'status' => 200, 'count' => $count,'msg'=>'Your Item Is Added To Cart Successfully.']);
         // return redirect()->route('cart');
      }
      public function destroy($id){

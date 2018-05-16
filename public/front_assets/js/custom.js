@@ -46,9 +46,11 @@ $(".storeCart").on('submit', function(e){
       console.log(data);
       if(data.status == 200){
         alertify.success(data.msg);
-        setTimeout(function(){
-         window.location.reload(1);
-       }, 1000);
+       //  setTimeout(function(){
+       //   window.location.reload(1);
+       // }, 1000);
+       console.log(data.count);
+      $('#card_count').text(data.count);  
       }else if(data.status == 202){
         alertify.warning(data.msg);
       }else{
@@ -85,5 +87,8 @@ $(".quantity_value").bind('keyup mouseup', function () {
 
     console.log(total_price); 
     $('.total_price_value span').text(total_price);
-    $('.total_price_value_input').val(total_price);            
+    $('.total_price_value_input').val(total_price);   
+
+    var data_message = $(this).attr('data-message');
+    $('#quantity_'+data_message).val($(this).val());         
 });
