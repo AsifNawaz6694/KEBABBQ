@@ -89,6 +89,7 @@
       </style>
    </head>
    <body class="hold-transition login-page">
+    <?php echo $__env->make('general_partials.error_section', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
       <div class="login-box">
          <div class="login-logo">
             <a href="../../index2.html"><b>Admin</b>KEBABQ</a>

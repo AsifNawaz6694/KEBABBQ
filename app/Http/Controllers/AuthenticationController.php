@@ -105,8 +105,8 @@ class AuthenticationController extends Controller
 
         try{
             if(Auth::attempt(['email' => $request->email, 'password' => $request->password ] )) {
-
                 if (Auth::user()->role_id == '1') {
+                    // dd('123');
                     return redirect()->route('admin_index');
                 }elseif (Auth::user()->role_id == '3') {
                     return redirect()->route('dashboard');
@@ -116,7 +116,7 @@ class AuthenticationController extends Controller
 
             }else{
                 $this->set_session('Invalid Email/Password', false);
-                return redirect()->route('login_index');
+                return redirect()->back();
             }
 
         }

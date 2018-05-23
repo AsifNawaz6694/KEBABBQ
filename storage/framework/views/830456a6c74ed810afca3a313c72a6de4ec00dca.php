@@ -93,15 +93,17 @@
                   <li>
                      <a href="<?php echo e(route('cart')); ?>">
                      <span class="fa fa-shopping-cart my-cart-icon">
-                     <?php if(Cart::instance('default')->count() > 0 ): ?>
-                     <span id="card_count" class="badge badge-notify my-cart-badge">
-                        <?php echo e(Cart::instance('default')->count()); ?>
+                        <span id="card_count" class="badge badge-notify my-cart-badge">
+                        <?php if(Cart::instance('default')->count() > 0 ): ?>
+                           <?php echo e(Cart::instance('default')->count()); ?>
 
-                     </span>
-                     <?php endif; ?>
-                     <span>
-                      CART
-                     </span>
+                           <?php else: ?>
+                           0
+                        <?php endif; ?>
+                        </span>
+                        <span>
+                         CART
+                        </span>
                       </span>
                      </a>
                   </li>

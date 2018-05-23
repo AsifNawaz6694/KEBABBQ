@@ -3,6 +3,7 @@
         <div class="row">
             <!-- /.col -->
             <div class="col-md-12">
+                @include('general_partials.error_section')
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#settings" data-toggle="tab">User Information</a></li>
@@ -94,7 +95,7 @@
                                 <div class="form-group">
                                     <label for="inputName" class="col-sm-2 control-label">Old Password</label>
                                     <div class="col-sm-10">
-                                        <input type="password" class="form-control" value="{{$user->password}}"  name="old_password">
+                                        <input type="password" class="form-control" value=""  name="old_password">
                                     </div>
                                 </div>
                                 <div class="form-group">

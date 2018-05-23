@@ -34,6 +34,7 @@ class AdminController extends Controller
             )
             ->whereRaw('MONTH(created_at) = ?',[$i])
             ->whereRaw('YEAR(created_at) = ?',[$current_year])
+            ->where('status',1)
             ->first();
             if ($order->total_price == null) {
                 array_push($array_price, $order);
@@ -184,29 +185,31 @@ class AdminController extends Controller
         return redirect()->back();
     }  
     public function update_password(Request $request,$id){
+
         $user_info = User::select('password')->where('id',$id)->first();       
         if (Hash::check($request->old_password, $user_info['password'])) {
-            if($request->password === $request->password_confirmation){
+            if($request->password === $request->confirmation_password){                  
                 $user = User::where('id',$id)->update([
                     'password' => bcrypt($request->password)
                 ]);
                 if($user){
-                    session::flash('success_msg','Your Password Is Updated Succesfully');
-                    return redirect()->back();
+                $this->set_session('Your Password Is Updated Succesfully', true);
+                return redirect()->back();
                 }
                 else{
-                    session::flash('err_message','Your Password Is Not Updated Succesfully');
-                    return redirect()->back();
+                $this->set_session('Your Password Is Not Updated Succesfully', false);
+                return redirect()->back();
                 }
             }
             else{
-                session::flash('err_message','Password And Confirmation Password Do Not Matched');
+                $this->set_session('Password And Confirmation Password Do Not Matched', false);        
                 return redirect()->back();
             }
         }
         else{
-            session::flash('err_message','Pl');
-            return redirect()->back();
+
+             $this->set_session('Old Password Do Not Matched', false);    
+                return redirect()->back();
         }
     }
 

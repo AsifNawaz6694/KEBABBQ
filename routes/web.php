@@ -41,8 +41,8 @@ Route::get('getCancel/', 'Front\PaypalController@getCancel')->name('getCancel');
 /*Admin Routes Started*/
 Route::group(['prefix' => 'admin' ,  'middleware' => 'is-admin'], function () {
 	Route::get('/', 'Admin\AdminController@index')->name('admin_index');
-	Route::get('admin_logout', 'Admin\AdminController@admin_logout')->name('admin_logout');
-		
+	Route::get('admin_logout', 'Admin\AdminController@admin_logout')->name('admin_logout');		
+	Route::post('user/password_update/{id}', 'Admin\AdminController@update_password')->name('update_password');
 //Statistics Routes Started
 	Route::get('/chart', 'Admin\AdminController@chart')->name('chart');
 //Statistics Routes Ended

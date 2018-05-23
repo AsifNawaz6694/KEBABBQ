@@ -93,14 +93,16 @@
                   <li>
                      <a href="{{ route('cart') }}">
                      <span class="fa fa-shopping-cart my-cart-icon">
-                     @if(Cart::instance('default')->count() > 0 )
-                     <span id="card_count" class="badge badge-notify my-cart-badge">
-                        {{ Cart::instance('default')->count()}}
-                     </span>
-                     @endif
-                     <span>
-                      CART
-                     </span>
+                        <span id="card_count" class="badge badge-notify my-cart-badge">
+                        @if(Cart::instance('default')->count() > 0 )
+                           {{ Cart::instance('default')->count()}}
+                           @else
+                           0
+                        @endif
+                        </span>
+                        <span>
+                         CART
+                        </span>
                       </span>
                      </a>
                   </li>
